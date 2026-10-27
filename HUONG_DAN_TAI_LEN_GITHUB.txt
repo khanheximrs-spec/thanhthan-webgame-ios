@@ -1,0 +1,12 @@
+HUONG DAN BUILD IPA - THANH THAN
+
+Kho GitHub cua ban: https://github.com/khanheximrs-spec/thanhthan-webgame-ios
+1. Giai nen file ZIP nay tren Windows.
+2. Mo: https://github.com/khanheximrs-spec/thanhthan-webgame-ios/upload/main
+3. Keo THA TOAN BO NOI DUNG BEN TRONG THU MUC sau khi giai nen (khong keo file zip).
+   Quan trong: phai co .github/workflows/unsigned-ipa.yml o thu muc goc.
+4. Nhan Commit changes.
+5. Xem ket qua: https://github.com/khanheximrs-spec/thanhthan-webgame-ios/actions
+6. Neu build thanh cong: chon lan chay > Artifacts > ThanhThanWebGame-unsigned-IPA > giai nen lay IPA.
+
+IPA nay CHUA KY, can ky hop le truoc khi cai vao iPhone. Game yeu cau Internet va website con hoat dong.
