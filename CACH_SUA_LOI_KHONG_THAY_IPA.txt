@@ -1,0 +1,17 @@
+KHAC PHUC REPOSITORY THANH THAN CHUA CO IPA
+
+GitHub hien tai chi co file 'Tệp_000' (day la mot file ZIP), khong co ma nguon da giai nen. GitHub khong tu dong giai nen file ZIP trong kho, nen build IPA chua chay.
+
+Tren may Windows:
+1. Giai nen goi zip 'ThanhThan_Sua_Loi_Upload_GitHub.zip' vao mot thu muc.
+2. Mo thu muc vua giai nen, bam dup 'CHAY_DE_TAI_LEN_GITHUB.bat'.
+3. Neu may thieu Git, cai Git for Windows: https://git-scm.com/downloads/win (sau do chay lai .bat).
+4. Dang nhap GitHub qua trinh duyet neu duoc yeu cau.
+5. Khi .bat bao thanh cong, mo https://github.com/khanheximrs-spec/thanhthan-webgame-ios/actions
+6. Chon Build ThanhThan iOS IPA. Neu thanh cong (mau xanh), tai 'ThanhThanWebGame-unsigned-IPA'.
+7. Giai nen artifact se co file .ipa chua ky. Ban can ky hop le moi cai duoc len iPhone.
+
+Khong up file ZIP truc tiep vao GitHub (tinh huong se lap lai).
+Goi chua ca thu muc an '.github', thu muc 'ThanhThanWebGame.xcodeproj' va ma nguon 'ThanhThanWebGame'.
+
+Day la ung dung WebView mo game online https://play.thanhthan.info/, khong phai game offline. Chua kiem thu truc tiep tren iPhone.
