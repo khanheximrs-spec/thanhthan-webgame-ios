@@ -1,0 +1,66 @@
+name: Build ThanhThan iOS IPA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Create Xcode project from existing files
+        run: |
+          brew install xcodegen
+          cat > project.yml <<'PROJECT'
+          name: ThanhThanWebGame
+          targets:
+            ThanhThanWebGame:
+              type: application
+              platform: iOS
+              deploymentTarget: '15.0'
+              sources:
+                - path: ThanhThanWebGameApp.swift
+                - path: GameScreen.swift
+              settings:
+                base:
+                  PRODUCT_BUNDLE_IDENTIFIER: com.khanheximrs.thanhthanwebgame
+                  INFOPLIST_FILE: Info.plist
+                  GENERATE_INFOPLIST_FILE: NO
+                  SWIFT_VERSION: '5.0'
+                  TARGETED_DEVICE_FAMILY: '1,2'
+          PROJECT
+          xcodegen generate --spec project.yml
+
+      - name: Build for iPhone without signing
+        run: |
+          xcodebuild -project ThanhThanWebGame.xcodeproj \
+            -scheme ThanhThanWebGame \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO build
+
+      - name: Package IPA
+        run: |
+          mkdir -p Payload
+          cp -R build/Build/Products/Release-iphoneos/ThanhThanWebGame.app Payload/
+          zip -qry ThanhThanWebGame-unsigned.ipa Payload
+          unzip -t ThanhThanWebGame-unsigned.ipa
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ThanhThanWebGame-unsigned-IPA
+          path: ThanhThanWebGame-unsigned.ipa
+          retention-days: 7
+          if-no-files-found: error
